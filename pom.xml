@@ -8,11 +8,6 @@
   <name>medev-tpfinal</name>
   <url>http://maven.apache.org</url>
 
-  <properties>
-    <sonar.organization>truaux</sonar.organization>
-    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -21,4 +16,12 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>22</maven.compiler.source>
+    <maven.compiler.target>22</maven.compiler.target>
+    <sonar.organization>truaux</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+  </properties>
 </project>
