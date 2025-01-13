@@ -55,6 +55,7 @@ public class JoueurTest
         posPossibles[0] = pos;
 
         String simulatedInput = "e\n4\n";
+        InputStream stdin = System.in;
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
         Position expected = pos;
@@ -63,5 +64,7 @@ public class JoueurTest
         assertNotNull(actual);
         assertEquals(expected.getX(), actual.getX());
         assertEquals(expected.getY(), actual.getY());
+
+        System.setIn(stdin);
     }
 }

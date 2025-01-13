@@ -20,7 +20,7 @@ public class Joueur {
     public Position jouer(Position[] coupsPossibles){
         Boolean valide = false;
         Position coup = new Position();
-        
+
         while (!valide){
             coup = demandeCoup();
 
@@ -49,7 +49,6 @@ public class Joueur {
             String saisieCol = sc.nextLine();
             System.out.println("Indiquez le numero de la ligne où vous souhaitez jouer : ");
             String saisieLig = sc.nextLine();
-            sc.close();
             
             if (saisieCol.length() == 1 && saisieLig.length() == 1){
                 char col = saisieCol.charAt(0);
