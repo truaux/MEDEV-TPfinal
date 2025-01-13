@@ -16,7 +16,7 @@ public class Position {
     }
 
     public Position(int col, int lig){
-        x = alphabet.charAt(col);
+        x = alphabet.charAt(col-1);
         y = lig;
     }
 

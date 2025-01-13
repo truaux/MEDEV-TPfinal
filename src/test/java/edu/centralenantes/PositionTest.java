@@ -31,9 +31,7 @@ public class PositionTest
     /**
      * Rigourous Test :-)
      */
-    public void testPosition()
-    {
-        // Test de xToInt()
+    public void testXToInt() {
         Position pos = new Position('a', 1);
         int[] posInt = pos.xToInt();
         assertEquals(1, posInt[0]);
@@ -43,9 +41,10 @@ public class PositionTest
         posInt = pos.xToInt();
         assertEquals(8, posInt[0]);
         assertEquals(8, posInt[1]);
+    }
 
-        // Test de Position(int col, int lig)
-        pos = new Position(1, 1);
+    public void testConstructor() {
+        Position pos = new Position(1, 1);
         assertEquals('a', pos.getX());
 
         pos = new Position(8, 1);

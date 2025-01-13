@@ -1,5 +1,7 @@
 package edu.centralenantes;
 
+import java.io.ByteArrayInputStream;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -31,8 +33,17 @@ public class JoueurTest
     /**
      * Rigourous Test :-)
      */
-    public void testJoueur()
-    {
-        assertTrue( true );
+    public void testDemandeCoup() {
+        // Simuler les entrées utilisateur
+        String simulatedInput = "c\n4\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        Joueur j = new Joueur(0);
+
+        Position expected = new Position('c', 4);
+        Position actual = j.demandeCoup();
+
+        assertEquals(expected.getX(), actual.getX());
+        assertEquals(expected.getY(), actual.getY());
     }
 }
