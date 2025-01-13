@@ -82,7 +82,7 @@ public class Plateau {
                 voisinCapture = true;
             }
         //Deuxieme possibilite : meme colonne
-        } elif (yJoue == yVoisin){
+        } else if (yJoue == yVoisin){
             //le rapport nous donne la direction a explorer
             int rapport = xVoisin - xJoue;
             int xExplore = xVoisin + rapport;
@@ -129,7 +129,7 @@ public class Plateau {
                     int verif = 0;
                     int indic = 0;
                     while ((verif == 0) && (indic<mesVoisinsOpp.size())){
-                        if (capture(maPos, mesVoisinsOpp[indic])){
+                        if (capture(maPos, mesVoisinsOpp.get(indic), couleurJoue)){
                             verif = 1;
                         }
                         indic++;
@@ -176,7 +176,7 @@ public class Plateau {
         public boolean coupCorrect(Position positionAJouer, ArrayList<Position> coupJouable){
         boolean isIn = false;
         for (int i = 0; i<coupJouable.size(); i++){
-            if (positionAJouer.equals(coupJouable[i])){
+            if (positionAJouer.equals(coupJouable.get(i))){
                 isIn = true;
             }
         }
@@ -200,7 +200,7 @@ public class Plateau {
                 this.positions[xJoue][yExplore] = couleurJoue;
             }
         //Deuxieme possibilite : meme colonne
-        } elif (yJoue == yCapture){
+        } else if (yJoue == yCapture){
             //le rapport nous donne la direction a explorer
             int rapport = xCapture - xJoue;
             int xExplore = xCapture + rapport;
@@ -251,8 +251,8 @@ public class Plateau {
                 }
                 ArrayList<Position> capturesPossibles = this.voisinsOpposes(positionAJouer, couleurJoue);
                 for (int i = 0; i<capturesPossibles.size(); i++){
-                    if (capture(positionAJouer, capturesPossibles[i], couleurJoue)){
-                        this.capturePions(positionAJouer, capturesPossibles[i], couleurJoue);
+                    if (capture(positionAJouer, capturesPossibles.get(i), couleurJoue)){
+                        this.capturePions(positionAJouer, capturesPossibles.get(i), couleurJoue);
                     }
                 }
                 int xJoue = positionAJouer.xToInt() - 1;
@@ -270,8 +270,8 @@ public class Plateau {
         if (gagnant == -1){
             System.out.println("Fin de Partie : egalite !");
         } else {
-            numeroJoueurGagnant = 2 - gagnant;
-            System.out.println("Fin de Partie : le joueur "+numeroJoueurGagnant+" a gagne !");
+            int numeroJoueurGagnant = 2 - gagnant;
+            System.out.println("Fin de Partie : le joueur "+ numeroJoueurGagnant +" a gagne !");
         }
     }
 }
