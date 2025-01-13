@@ -136,6 +136,30 @@ public class Plateau {
         return coupJouable;
     }
 
+    public int couleurGagnante(){
+        int nb0 = 0;
+        int nb1 = 0;
+
+        for (int i = 0; i < 8; i++){
+            for (int j = 0; j < 8; j++){
+                if (positions[i][j] == 0){
+                    nb0 += 1;
+                } else if (positions[i][j] == 1){
+                    nb1 += 1;
+                }
+            }
+        }
+
+        if (nb0 < nb1){
+            return 1;
+        } else if (nb0 > nb1){
+            return 0;
+        } else {
+            // Cas d'egalite
+            return -1;
+        }
+    }
+
     public boolean finDePartie(Joueur j1, Joueur j2){
         //Lorsqu'aucun joueur ne peut jouer, la partie prend fin
         return ((coupAutorise(j1).size() == 0) && (coupAutorise(j2).size() == 0));
