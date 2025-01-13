@@ -1,15 +1,20 @@
 package edu.centralenantes;
 
-import java.nio.file.attribute.PosixFileAttributeView;
 import java.util.Scanner;
-
-import Position;
 
 public class Joueur {
     private int couleur;
 
     public Joueur(int c){
         couleur = c;
+    }
+
+    public int getCouleur() {
+        return couleur;
+    }
+
+    public void setCouleur(int couleur) {
+        this.couleur = couleur;
     }
 
     public Position jouer(Position[] coupsPossibles){
@@ -23,7 +28,7 @@ public class Joueur {
         }
         if (!existe){
             System.out.println("Votre coup n'est pas valide !");
-            coup = jouer();
+            coup = jouer(coupsPossibles);
         }
         return coup;
     }
@@ -39,7 +44,7 @@ public class Joueur {
         Position resultat = new Position();
         if (saisieCol.length() == 1 && saisieLig.length() == 1){
             char col = saisieCol.charAt(0);
-            int lig;
+            int lig = -1;
             try{
                 lig = Integer.valueOf(saisieLig);
             } catch (NumberFormatException error) {
