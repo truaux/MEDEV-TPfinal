@@ -1,3 +1,8 @@
+package edu.centralenantes;
+
+import edu.centralenantes.Position;
+import edu.centralenantes.Joueur;
+
 public class Plateau {
     private int[][] positions;
 
