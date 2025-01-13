@@ -2,17 +2,35 @@ package edu.centralenantes;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * @author titou
+ */
 public class Plateau {
-    private int[][] positions;
 
+    /**
+     *
+     */
+    public int[][] positions;
+
+    /**
+     *
+     */
     public Plateau(){
         this.positions = new int[8][8];
     }
 
+    /**
+     *
+     * @param pos
+     */
     public Plateau(int[][] pos){
         this.positions = pos;
     }
 
+    /**
+     *
+     */
     public void initialiserPartie(){
         for (int i=0; i<8; i++){
             for (int j=0; j<8; j++){
@@ -27,6 +45,9 @@ public class Plateau {
         this.positions[4][4] = 0;
     }
 
+    /**
+     *
+     */
     public void affichage(){
         for (int i=0; i<8; i++){
             for (int j=0; j<8; j++){
@@ -36,10 +57,22 @@ public class Plateau {
         }
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public boolean dansPlateau(int x, int y){
         return ((x >= 0) && (x < 8) && (y >= 0) && (y < 0));
     }
 
+    /**
+     *
+     * @param pos
+     * @param couleurJoue
+     * @return
+     */
     public ArrayList<Position> voisinsOpposes(Position pos, int couleurJoue){
         ArrayList<Position> mesVoisinsOpp = new ArrayList<Position>();
         int couleurOppose = 1 - couleurJoue;
@@ -61,6 +94,13 @@ public class Plateau {
         return mesVoisinsOpp;
     }
 
+    /**
+     *
+     * @param joue
+     * @param voisin
+     * @param couleurJoue
+     * @return
+     */
     public boolean capture(Position joue, Position voisin, int couleurJoue){
         int couleurOppose = 1 - couleurJoue;
         int xJoue = joue.xToInt() - 1;
@@ -114,10 +154,14 @@ public class Plateau {
         return voisinCapture;
     }
 
+    /**
+     *
+     * @param j1
+     * @return
+     */
     public ArrayList<Position> coupAutorise(Joueur j1){
         ArrayList<Position> coupJouable = new ArrayList<Position>();
         int couleurJoue = j1.getCouleur();
-        int couleurOppose = 1 - couleurJoue;
         //On explore tout le plateau
         for (int i=0; i<8; i++){
             for (int j=0; j<8; j++){
@@ -129,7 +173,7 @@ public class Plateau {
                     int verif = 0;
                     int indic = 0;
                     while ((verif == 0) && (indic<mesVoisinsOpp.size())){
-                        if (capture(maPos, mesVoisinsOpp[indic])){
+                        if (capture(maPos, mesVoisinsOpp.get(indic), couleurJoue)){
                             verif = 1;
                         }
                         indic++;
@@ -144,6 +188,10 @@ public class Plateau {
         return coupJouable;
     }
 
+    /**
+     *
+     * @return
+     */
     public int couleurGagnante(){
         int nb0 = 0;
         int nb1 = 0;
@@ -168,21 +216,39 @@ public class Plateau {
         }
     }
 
+    /**
+     *
+     * @param j1
+     * @param j2
+     * @return
+     */
     public boolean finDePartie(Joueur j1, Joueur j2){
         //Lorsqu'aucun joueur ne peut jouer, la partie prend fin
         return ((coupAutorise(j1).size() == 0) && (coupAutorise(j2).size() == 0));
     }
 
-        public boolean coupCorrect(Position positionAJouer, ArrayList<Position> coupJouable){
+    /**
+     *
+     * @param positionAJouer
+     * @param coupJouable
+     * @return
+     */
+    public boolean coupCorrect(Position positionAJouer, ArrayList<Position> coupJouable){
         boolean isIn = false;
         for (int i = 0; i<coupJouable.size(); i++){
-            if (positionAJouer.equals(coupJouable[i])){
+            if (positionAJouer.equals(coupJouable.get(i))){
                 isIn = true;
             }
         }
         return isIn;
     }
     
+    /**
+     *
+     * @param positionAJouer
+     * @param pionCapture
+     * @param couleurJoue
+     */
     public void capturePions(Position positionAJouer, Position pionCapture, int couleurJoue){
         int couleurOppose = 1 - couleurJoue;
         int xJoue = positionAJouer.xToInt() - 1;
@@ -200,7 +266,7 @@ public class Plateau {
                 this.positions[xJoue][yExplore] = couleurJoue;
             }
         //Deuxieme possibilite : meme colonne
-        } elif (yJoue == yCapture){
+        } else if (yJoue == yCapture){
             //le rapport nous donne la direction a explorer
             int rapport = xCapture - xJoue;
             int xExplore = xCapture + rapport;
@@ -225,7 +291,9 @@ public class Plateau {
         }
     }
 
-
+    /**
+     *
+     */
     public void jeu(){
         //On initialise les joueurs
         Joueur j1 = new Joueur(1);
@@ -237,7 +305,7 @@ public class Plateau {
         while (!finDePartie(j1, j2)){
             //Pour chaque tour de jeu, on recherche les coup possible
             ArrayList<Position> coupJouable = this.coupAutorise(jActif);
-            if (coupJouable.size() > 0){
+            if (!coupJouable.isEmpty()){
                 int couleurJoue = jActif.getCouleur();
                 int numeroJoueur = 2 - couleurJoue;
                 System.out.println("Au tour du joueur "+numeroJoueur);
@@ -251,8 +319,8 @@ public class Plateau {
                 }
                 ArrayList<Position> capturesPossibles = this.voisinsOpposes(positionAJouer, couleurJoue);
                 for (int i = 0; i<capturesPossibles.size(); i++){
-                    if (capture(positionAJouer, capturesPossibles[i], couleurJoue)){
-                        this.capturePions(positionAJouer, capturesPossibles[i], couleurJoue);
+                    if (capture(positionAJouer, capturesPossibles.get(i), couleurJoue)){
+                        this.capturePions(positionAJouer, capturesPossibles.get(i), couleurJoue);
                     }
                 }
                 int xJoue = positionAJouer.xToInt() - 1;
@@ -270,7 +338,7 @@ public class Plateau {
         if (gagnant == -1){
             System.out.println("Fin de Partie : egalite !");
         } else {
-            numeroJoueurGagnant = 2 - gagnant;
+            int numeroJoueurGagnant = 2 - gagnant;
             System.out.println("Fin de Partie : le joueur "+numeroJoueurGagnant+" a gagne !");
         }
     }

@@ -33,16 +33,19 @@ public class PositionTest
      */
     public void testXToInt() {
         Position pos = new Position('a', 1);
-        int[] posInt = pos.xToInt();
-        assertEquals(1, posInt[0]);
-        assertEquals(1, posInt[1]);
+        int posInt = pos.xToInt();
+        assertEquals(1, posInt);
+        assertEquals(1, pos.getY());
 
         pos = new Position('h', 8);
         posInt = pos.xToInt();
-        assertEquals(8, posInt[0]);
-        assertEquals(8, posInt[1]);
+        assertEquals(8, posInt);
+        assertEquals(8, pos.getY());
     }
 
+    /**
+     *
+     */
     public void testConstructor() {
         Position pos = new Position(1, 1);
         assertEquals('a', pos.getX());

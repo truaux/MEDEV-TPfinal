@@ -2,21 +2,42 @@ package edu.centralenantes;
 
 import java.util.Scanner;
 
+/**
+ *
+ * @author titou
+ */
 public class Joueur {
     private int couleur;
 
+    /**
+     *
+     * @param c
+     */
     public Joueur(int c){
         couleur = c;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getCouleur() {
         return couleur;
     }
 
+    /**
+     *
+     * @param couleur
+     */
     public void setCouleur(int couleur) {
         this.couleur = couleur;
     }
 
+    /**
+     *
+     * @param coupsPossibles
+     * @return
+     */
     public Position jouer(Position[] coupsPossibles){
         Boolean valide = false;
         Position coup = new Position();
@@ -39,6 +60,10 @@ public class Joueur {
         return coup;
     }
 
+    /**
+     *
+     * @return
+     */
     public Position demandeCoup(){
         Boolean valide = false;
         Position resultat = new Position();

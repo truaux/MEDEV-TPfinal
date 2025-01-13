@@ -1,0 +1,41 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'C:/Users/titou/OneDrive/Documents/CN (temporaire)/MEDEV/medev-tpfinal/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/titou/OneDrive/Documents/CN (temporaire)/MEDEV/medev-tpfinal/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'medev-tpfinal 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'medev-tpfinal 1.0-SNAPSHOT API'
+edu.centralenantes
+C:\Users\titou\OneDrive\Documents\CN (temporaire)\MEDEV\medev-tpfinal\src\main\java = 1736750970781
+C:\Users\titou\OneDrive\Documents\CN (temporaire)\MEDEV\medev-tpfinal\target\reports\apidocs\allclasses-index.html = 1736766922717
+C:\Users\titou\OneDrive\Documents\CN (temporaire)\MEDEV\medev-tpfinal\target\reports\apidocs\allpackages-index.html = 1736766922720
+C:\Users\titou\OneDrive\Documents\CN (temporaire)\MEDEV\medev-tpfinal\target\reports\apidocs\element-list = 1736766922668
+C:\Users\titou\OneDrive\Documents\CN (temporaire)\MEDEV\medev-tpfinal\target\reports\apidocs\help-doc.html = 1736766922749
+C:\Users\titou\OneDrive\Documents\CN (temporaire)\MEDEV\medev-tpfinal\target\reports\apidocs\index-all.html = 1736766922738
+C:\Users\titou\OneDrive\Documents\CN (temporaire)\MEDEV\medev-tpfinal\target\reports\apidocs\index.html = 1736766922743
+C:\Users\titou\OneDrive\Documents\CN (temporaire)\MEDEV\medev-tpfinal\target\reports\apidocs\member-search-index.js = 1736766922725
+C:\Users\titou\OneDrive\Documents\CN (temporaire)\MEDEV\medev-tpfinal\target\reports\apidocs\module-search-index.js = 1736766922722
+C:\Users\titou\OneDrive\Documents\CN (temporaire)\MEDEV\medev-tpfinal\target\reports\apidocs\overview-tree.html = 1736766922706
+C:\Users\titou\OneDrive\Documents\CN (temporaire)\MEDEV\medev-tpfinal\target\reports\apidocs\package-search-index.js = 1736766922723
+C:\Users\titou\OneDrive\Documents\CN (temporaire)\MEDEV\medev-tpfinal\target\reports\apidocs\search.html = 1736766922741
+C:\Users\titou\OneDrive\Documents\CN (temporaire)\MEDEV\medev-tpfinal\target\reports\apidocs\tag-search-index.js = 1736766922726
+C:\Users\titou\OneDrive\Documents\CN (temporaire)\MEDEV\medev-tpfinal\target\reports\apidocs\type-search-index.js = 1736766922724

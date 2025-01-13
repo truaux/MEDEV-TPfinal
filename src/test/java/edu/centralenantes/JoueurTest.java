@@ -48,6 +48,9 @@ public class JoueurTest
         assertEquals(expected.getY(), actual.getY());
     }
 
+    /**
+     *
+     */
     public void testJouer(){
         Position pos = new Position('e', 4);
         Joueur j = new Joueur(0);
