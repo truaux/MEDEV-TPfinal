@@ -136,5 +136,12 @@ public class Plateau {
         return coupJouable;
     }
 
+    public boolean finDePartie(Joueur j1, Joueur j2){
+        //Lorsqu'aucun joueur ne peut jouer, la partie prend fin
+        return ((coupAutorise(j1).size() == 0) && (coupAutorise(j2).size() == 0));
+    }
 
+    public jeu(Joueur j1, Joueur j2){
+        this.initialiserPartie();
+    }
 }
