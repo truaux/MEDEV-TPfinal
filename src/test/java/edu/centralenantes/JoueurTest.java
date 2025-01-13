@@ -1,6 +1,7 @@
 package edu.centralenantes;
 
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -53,9 +54,13 @@ public class JoueurTest
         Position[] posPossibles = new Position[1];
         posPossibles[0] = pos;
 
+        String simulatedInput = "e\n4\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
         Position expected = pos;
         Position actual = j.jouer(posPossibles);
 
+        assertNotNull(actual);
         assertEquals(expected.getX(), actual.getX());
         assertEquals(expected.getY(), actual.getY());
     }

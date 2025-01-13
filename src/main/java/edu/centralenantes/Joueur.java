@@ -20,6 +20,7 @@ public class Joueur {
     public Position jouer(Position[] coupsPossibles){
         Boolean valide = false;
         Position coup = new Position();
+        
         while (!valide){
             coup = demandeCoup();
 
