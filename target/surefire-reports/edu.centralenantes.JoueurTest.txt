@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: edu.centralenantes.JoueurTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.090 s <<< FAILURE! -- in edu.centralenantes.JoueurTest
-edu.centralenantes.JoueurTest.testJouer -- Time elapsed: 0.066 s <<< ERROR!
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.109 s <<< FAILURE! -- in edu.centralenantes.JoueurTest
+edu.centralenantes.JoueurTest.testJouer -- Time elapsed: 0.041 s <<< ERROR!
 java.util.NoSuchElementException: No line found
 	at java.base/java.util.Scanner.nextLine(Scanner.java:1677)
 	at edu.centralenantes.Joueur.demandeCoup(Joueur.java:49)
