@@ -43,4 +43,12 @@ public class Position {
     public void setAlphabet(String alphabet) {
         this.alphabet = alphabet;
     }
+
+    public int[] xToInt(){
+        int[] resultat = new int[2];
+        int col = alphabet.indexOf(this.x) + 1;
+        resultat[0] = col;
+        resultat[1] = this.y;
+        return resultat;
+    }
 }
