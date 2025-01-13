@@ -44,11 +44,8 @@ public class Position {
         this.alphabet = alphabet;
     }
 
-    public int[] xToInt(){
-        int[] resultat = new int[2];
-        int col = alphabet.indexOf(this.x) + 1;
-        resultat[0] = col;
-        resultat[1] = this.y;
+    public int xToInt(){
+        int resultat = alphabet.indexOf(this.x) + 1;
         return resultat;
     }
 }
