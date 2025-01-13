@@ -1,6 +1,9 @@
 package edu.centralenantes;
 
 import edu.centralenantes.Position;
+
+import java.util.ArrayList;
+
 import edu.centralenantes.Joueur;
 
 public class Plateau {
@@ -26,15 +29,6 @@ public class Plateau {
         this.positions[3][4] = 1;
         this.positions[4][3] = 1;
         this.positions[4][4] = 0;
-    }
-
-    public void affichage(){
-        for (int i=0; i<8; i++){
-            for (int j=0; j<8; j++){
-                System.out.print(this.positions[i][j] + "\t");
-            }
-            System.out.println();
-        }
     }
 
     public boolean dansPlateau(int x, int y){
@@ -174,105 +168,7 @@ public class Plateau {
         return ((coupAutorise(j1).size() == 0) && (coupAutorise(j2).size() == 0));
     }
 
-    public boolean coupCorrect(Position positionAJouer, ArrayList<Position> coupJouable){
-        boolean isIn = false;
-        for (int i = 0; i<coupJouable.size(); i++){
-            if (positionAJouer.equals(coupJouable[i])){
-                isIn = true;
-            }
-        }
-        return isIn;
-    }
-    
-    public void capturePions(Position positionAJouer, Position pionCapture, int couleurJoue){
-        int couleurOppose = 1 - couleurJoue;
-        int xJoue = positionAJouer.xToInt() - 1;
-        int yJoue = positionAJouer.getY() - 1;
-        int xCapture = pionCapture.xToInt() - 1;
-        int yCapture = pionCapture.getY() - 1;
-        //Premiere possibilite : meme ligne
-        if (xJoue == xCapture){
-            //le rapport nous donne la direction a explorer
-            int rapport = yCapture - yJoue;
-            int yExplore = yCapture + rapport;
-            //on arrete l'exploration lorsqu'on atteint autre chose qu'un pion de la meme couleur que celui potentiellement capture.
-            while ((dansPlateau(xJoue, yExplore)) && (this.positions[xJoue][yExplore] == couleurOppose)){
-                yExplore += rapport;
-                this.positions[xJoue][yExplore] = couleurJoue;
-            }
-        //Deuxieme possibilite : meme colonne
-        } elif (yJoue == yCapture){
-            //le rapport nous donne la direction a explorer
-            int rapport = xCapture - xJoue;
-            int xExplore = xCapture + rapport;
-            //on arrete l'exploration lorsqu'on atteint autre chose qu'un pion de la meme couleur que celui potentiellement capture.
-            while ((dansPlateau(xExplore, yJoue)) && (this.positions[xExplore][yJoue] == couleurOppose)){
-                xExplore += rapport;
-                this.positions[xExplore][yJoue] = couleurJoue;
-            }
-        //Troisieme possibilite : meme diagonale
-        } else {
-            //les rapports nous donnent la direction a explorer
-            int xrapport = xCapture - xJoue;
-            int xExplore = xCapture + xrapport;
-            int yrapport = yCapture - yJoue;
-            int yExplore = yCapture + yrapport;
-            //on arrete l'exploration lorsqu'on atteint autre chose qu'un pion de la meme couleur que celui potentiellement capture.
-            while ((dansPlateau(xExplore, yExplore)) && (this.positions[xExplore][yExplore] == couleurOppose)){
-                xExplore += xrapport;
-                yExplore += yrapport;
-                this.positions[xExplore][yExplore] = couleurJoue;
-            }
-        }
-    }
-
-
-    public void jeu(){
-        //On initialise les joueurs
-        Joueur j1 = new Joueur(1);
-        Joueur j2 = new Joueur(0);
-        //On initialise le plateau
+    public jeu(Joueur j1, Joueur j2){
         this.initialiserPartie();
-        Joueur jActif = j1;
-        //Tant qu'un des joueurs peut jouer, on continue
-        while (!finDePartie(j1, j2)){
-            //Pour chaque tour de jeu, on recherche les coup possible
-            ArrayList<Position> coupJouable = this.coupAutorise(jActif);
-            if (coupJouable.size() > 0){
-                int couleurJoue = jActif.getCouleur();
-                int numeroJoueur = 2 - couleurJoue;
-                System.out.println("Au tour du joueur "+numeroJoueur);
-                //On affiche le monde
-                this.affichage();
-                //On demande au joueur de choisir son coup
-                Position positionAJouer = jActif.demandeCoup();
-                while (!this.coupCorrect(positionAJouer, coupJouable)){
-                    //si ce coup n'est pas possible on lui redemande de choisir
-                    positionAJouer = jActif.demandeCoup();
-                }
-                ArrayList<Position> capturesPossibles = this.voisinsOpposes(positionAJouer, couleurJoue);
-                for (int i = 0; i<capturesPossibles.size(); i++){
-                    if (capture(positionAJouer, capturesPossibles[i], couleurJoue)){
-                        this.capturePions(positionAJouer, capturesPossibles[i], couleurJoue);
-                    }
-                }
-                int xJoue = positionAJouer.xToInt() - 1;
-                int yJoue = positionAJouer.getY() - 1;
-                this.positions[xJoue][yJoue] = couleurJoue;
-            }
-            //quand le tour est fini, on change de joueur
-            if (jActif.equals(j1)){
-                jActif = j2;
-            } else {
-                jActif = j1;
-            }
-        }
-        int gagnant = this.couleurGagnante();
-        if (gagnant == -1){
-            System.out.println("Fin de Partie : egalite !");
-        } else {
-            numeroJoueurGagnant = 2 - gagnant;
-            System.out.println("Fin de Partie : le joueur "+numeroJoueurGagnant+" a gagne !");
-        }
     }
 }
