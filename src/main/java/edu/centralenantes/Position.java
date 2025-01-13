@@ -6,8 +6,8 @@ public class Position {
     private String alphabet = "abcdefgh";
 
     public Position(){
-        x = 'd';
-        y = 4;
+        x = 'z';
+        y = 0;
     }
 
     public Position(char col, int lig){
