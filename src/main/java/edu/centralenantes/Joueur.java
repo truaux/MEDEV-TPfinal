@@ -12,8 +12,20 @@ public class Joueur {
         couleur = c;
     }
 
-    public String jouer(Array<Position> coupPossible){
+    public Position jouer(Position[] coupsPossibles){
+        Position coup = demandeCoup();
 
+        Boolean existe = false;
+        for (int i=0; i < coupsPossibles.length; i++){
+            if (coupsPossibles[i].equals(coup)){
+                existe = true;    
+            }
+        }
+        if (!existe){
+            System.out.println("Votre coup n'est pas valide !");
+            coup = jouer();
+        }
+        return coup;
     }
 
     public Position demandeCoup(){
@@ -46,7 +58,7 @@ public class Joueur {
             }
         } else {
             System.out.println("Votre entree n'est pas valide !");
-            demandeCoup();
+            resultat = demandeCoup();
         }
         return resultat;
     }
